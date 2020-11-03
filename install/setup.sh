@@ -50,9 +50,10 @@ function install_redhat {
   yum install -y python3-devel && \
   yum install -y wget && \
   yum clean all
-  wget https://nmap.org/dist/nmap-7.90-1.x86_64.rpm
-  rpm -U nmap-*.rpm
-  rm -rf nmap-*.rpm
+  wget -qO- "https://nmap.org/download.html"|grep "rpm -vhU"|head -1 | xargs -0 bash -c
+  # wget https://nmap.org/dist/nmap-7.90-1.x86_64.rpm
+  # rpm -U nmap-*.rpm
+  # rm -rf nmap-*.rpm
 }
 
 function install_ubuntu {
